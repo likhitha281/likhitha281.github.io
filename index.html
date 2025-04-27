@@ -1,65 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Likhitha's Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Likhitha's Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- First Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h3>UI/UX Designer</h3>
-            <h1>Hi, I'm <span>Likhitha Sindhu Geddam</span>
-        </div>
-        <!--<div class="">
-            <img src="" alt="">
-        </div>
-    </section>-->
+  <!-- Header Section (Name on Top) -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Hi, I'm <span>Likhitha Sindhu Geddam</span></h1>
+      <h3>UI/UX Designer | Developer | Future Data Scientist</h3>
+    </div>
+  </header>
 
-    <!-- Second Section -->
-    <section class="about">
-        <!--<div class="about-image">
-            <img src="about-image.jpg" alt="About Kevin">
-        </div>-->
-        <div class="about-content">
-            <h2>About Me</h2>
-            <p>I'm an Electronics and Communication Engineer with two years of experience working as a developer, where I honed my skills in building software solutions and problem-solving across different tech domains.
+  <!-- About Me Section -->
+  <section class="about">
+    <div class="about-content">
+      <h2>About Me</h2>
+      <p>
+        I'm an Electronics and Communication Engineer with two years of experience working as a developer, where I honed my skills in building software solutions and problem-solving across different tech domains.
+        <br><br>
+        My strong foundation in electronics, combined with my growing passion for software development, has naturally sparked my interest in Data Science and Computer Vision. I am now actively expanding my expertise in these fields, eager to blend my hardware knowledge with intelligent, data-driven applications that can shape the future of technology.
+        <br><br>
+        I'm driven by curiosity, a love for learning, and the excitement of solving real-world challenges with cutting-edge technology.
+      </p>
+    </div>
+  </section>
 
-My strong foundation in electronics, combined with my growing passion for software development, has naturally sparked my interest in Data Science and Computer Vision. I am now actively expanding my expertise in these fields, eager to blend my hardware knowledge with intelligent, data-driven applications that can shape the future of technology.
+  <!-- Skills, Experience, Education Section -->
+  <section class="details">
+    <div class="tabs">
+      <button class="tab-button active" onclick="openTab('skills')">Skills</button>
+      <button class="tab-button" onclick="openTab('experience')">Experience</button>
+      <button class="tab-button" onclick="openTab('education')">Education</button>
+    </div>
 
-I'm driven by curiosity, a love for learning, and the excitement of solving real-world challenges with cutting-edge technology.</p>
+    <!-- Tab Content -->
+    <div id="skills" class="tab-content active">
+      <h3>Skills</h3>
+      <ul>
+        <li><strong>UI/UX:</strong> Designing Web/App Interfaces</li>
+        <li><strong>Web Development:</strong> Creating Responsive Websites</li>
+        <li><strong>App Development:</strong> Building Android/iOS Applications</li>
+      </ul>
+    </div>
 
-           
-            <div class="tabs">
-                <button class="tab-button active" onclick="openTab('skills')">Skills</button>
-                <button class="tab-button" onclick="openTab('experience')">Experience</button>
-                <button class="tab-button" onclick="openTab('education')">Education</button>
-            </div>
+    <div id="experience" class="tab-content">
+      <h3>Experience</h3>
+      <p>Two years as a Developer: Worked on software solutions, problem-solving, and cross-domain tech projects.</p>
+    </div>
 
-            <!-- Tab Content -->
-            <div id="skills" class="tab-content active">
-                <h3>UI/UX</h3>
-                <p>Designing Web/App interfaces</p>
-                <h3>Web Development</h3>
-                <p>Web App Development</p>
-                <h3>App Development</h3>
-                <p>Building Android/iOS apps</p>
-            </div>
+    <div id="education" class="tab-content">
+      <h3>Education</h3>
+      <p>Bachelor's Degree in Electronics and Communication Engineering.</p>
+    </div>
+  </section>
 
-            <div id="experience" class="tab-content">
-                <p>Experience content goes here...</p>
-            </div>
-
-            <div id="education" class="tab-content">
-                <p>Education content goes here...</p>
-            </div>
-        </div>
-    </section>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 
 </body>
 </html>
