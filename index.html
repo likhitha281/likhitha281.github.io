@@ -1,68 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Likhitha's Portfolio</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Likhitha Sindhu Geddam - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <div class="container">
+        <header>
+            <h1>Likhitha Sindhu Geddam</h1>
+            <div class="social-links">
+                <a href="https://www.github.com/likhitha281" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://in.linkedin.com/in/likhitha-sindhu-geddam-b92b8b226" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/likhithageddam" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Google"><i class="fab fa-google"></i></a>
+                <a href="https://www.kaggle.com/likhithageddam" target="_blank" aria-label="Kaggle"><i class="fab fa-kaggle"></i></a>
+            </div>
+        </header>
 
-  <!-- Header Section -->
-  <header>
-    <div>
-      <h1>Hi, I'm <span>Likhitha Sindhu Geddam</span></h1>
-      <h3>Front-End Developer | Passionate About Data Science</h3>
+        <section id="about">
+            <div class="section-header">
+                <span class="badge">new</span>
+                <h2>About me</h2>
+            </div>
+            <div class="highlight-box">
+                <p>I am a technology consultant at PwC India, focused on building scalable cross-platform applications using FlutterFlow, Flutter and React Native. I am also a computer vision enthusiast hoping to build solutions that merge innovation with impact.</p>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <p>B.Tech - Electronics and Communication Engineering,<br>
+            PES University, Bengaluru</p>
+        </section>
+
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="experience-item">
+                <div class="year">2023 - PRESENT</div>
+                <div class="job-title">Associate Technology Consultant, PwC India</div>
+                <div class="text-widget">[Text Widget]</div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="project-item">
+                <p>Detection of white stem borer using YoloV5</p>
+                <a href="https://github.com/likhitha281/Detection-of-white-stem-borer-using-YOLOv5" target="_blank" class="external-link"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+            <div class="project-item">
+                <p>Detection of white stem borer using YoloV8</p>
+                <a href="https://github.com/likhitha281/Detection-of-white-stem-borer-using-YoloV8" target="_blank" class="external-link"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+        </section>
     </div>
-  </header>
 
-  <!-- About Me Section -->
-  <section class="about">
-    <div class="about-content">
-      <h2>About Me</h2>
-      <p>
-        I'm an Electronics and Communication Engineer with two years of experience as a developer, specializing in building software solutions and solving technical challenges.
-      </p>
-      <p>
-        My background in electronics, combined with my passion for software development, has led me to explore Data Science and Computer Vision. I’m eager to integrate hardware and intelligent, data-driven applications to drive innovation.
-      </p>
-      <p>
-        I thrive on curiosity, continuous learning, and the excitement of solving real-world problems using cutting-edge technology.
-      </p>
-    </div>
-  </section>
-
-  <!-- Skills, Experience, Education Section -->
-  <section class="details">
-    <nav class="tabs">
-      <button class="tab-button active" onclick="openTab('skills')">Skills</button>
-      <button class="tab-button" onclick="openTab('experience')">Experience</button>
-      <button class="tab-button" onclick="openTab('education')">Education</button>
-    </nav>
-
-    <!-- Tab Content -->
-    <div id="skills" class="tab-content active">
-      <h3>Skills</h3>
-      <ul>
-        <li><strong>UI/UX:</strong> Designing Web/App Interfaces</li>
-        <li><strong>Web Development:</strong> Creating Responsive Websites</li>
-        <li><strong>App Development:</strong> Building Android/iOS Applications</li>
-      </ul>
-    </div>
-    
-    <div id="experience" class="tab-content">
-      <h3>Experience</h3>
-      <p>2+ years as a Developer, working on software solutions, problem-solving, and cross-domain tech projects.</p>
-    </div>
-    
-    <div id="education" class="tab-content">
-      <h3>Education</h3>
-      <p><strong>B.Tech in Electronics and Communication Engineering</strong></p>
-      <p>PES University, Bangalore</p>
-    </div>
-  </section>
-
-  <script src="script.js"></script>
-
+    <script src="script.js"></script>
 </body>
 </html>
