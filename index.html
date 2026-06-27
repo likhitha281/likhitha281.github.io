@@ -1,63 +1,491 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Likhitha Sindhu Geddam - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Likhitha Sindhu Geddam — AI/ML Engineer</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0f0f0f;
+    --ink-2: #444;
+    --ink-3: #777;
+    --accent: #2d6a9f;
+    --accent-light: #e8f2fb;
+    --accent-mid: #b5d4f4;
+    --bg: #fafaf8;
+    --card: #ffffff;
+    --border: #e4e4e0;
+    --tag-bg: #f0f0ec;
+    --tag-text: #444;
+    --radius: 10px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #f0efeb;
+      --ink-2: #b8b6ae;
+      --ink-3: #7a7872;
+      --accent: #5ea3d4;
+      --accent-light: #0f2336;
+      --accent-mid: #1a3f5c;
+      --bg: #111110;
+      --card: #1a1a18;
+      --border: #2a2a27;
+      --tag-bg: #222220;
+      --tag-text: #b8b6ae;
+    }
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+  }
+  .nav-name { font-weight: 600; font-size: 15px; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 1.5rem; }
+  .nav-links a { color: var(--ink-3); text-decoration: none; font-size: 13.5px; transition: color .15s; }
+  .nav-links a:hover { color: var(--accent); }
+
+  .hero {
+    max-width: 860px; margin: 0 auto;
+    padding: 5rem 2rem 4rem;
+    display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: start;
+  }
+  .hero-eyebrow {
+    font-size: 13px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: .75rem;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700; line-height: 1.1; letter-spacing: -.03em;
+    color: var(--ink); margin-bottom: 1rem;
+  }
+  .hero-sub {
+    font-size: 16px; color: var(--ink-2); max-width: 520px; line-height: 1.7;
+    margin-bottom: 1.75rem;
+  }
+  .hero-badges { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 2rem; }
+  .badge {
+    font-size: 12px; font-weight: 500; padding: 4px 12px;
+    border-radius: 999px; border: 1px solid var(--border);
+    background: var(--tag-bg); color: var(--tag-text);
+  }
+  .badge.accent { background: var(--accent-light); color: var(--accent); border-color: var(--accent-mid); }
+  .hero-actions { display: flex; gap: .75rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: .4rem;
+    padding: 9px 18px; border-radius: var(--radius);
+    font-size: 13.5px; font-weight: 500; text-decoration: none; transition: all .15s; cursor: pointer; border: none;
+  }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { opacity: .88; }
+  .btn-ghost { background: transparent; border: 1px solid var(--border); color: var(--ink-2); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  .avatar-block { padding-top: .5rem; }
+  .avatar {
+    width: 130px; height: 130px; border-radius: 50%;
+    background: linear-gradient(135deg, #2d6a9f 0%, #1a3f5c 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.5rem; font-weight: 700; color: #fff; letter-spacing: -.02em;
+    border: 3px solid var(--border);
+  }
+  .social-row { display: flex; gap: .75rem; margin-top: 1rem; justify-content: center; }
+  .social-row a { color: var(--ink-3); font-size: 18px; transition: color .15s; }
+  .social-row a:hover { color: var(--accent); }
+
+  section { max-width: 860px; margin: 0 auto; padding: 3rem 2rem; border-top: 1px solid var(--border); }
+  .section-label {
+    font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 1.5rem;
+  }
+
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+  .skill-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; }
+  .skill-card-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .07em; color: var(--accent); margin-bottom: .6rem; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: .35rem; }
+  .skill-tag { font-size: 12px; padding: 3px 9px; border-radius: 6px; background: var(--tag-bg); color: var(--tag-text); }
+
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.25rem; }
+  .project-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem;
+    display: flex; flex-direction: column; gap: .75rem; transition: border-color .15s;
+  }
+  .project-card:hover { border-color: var(--accent); }
+  .project-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+  .project-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    background: var(--accent-light); color: var(--accent);
+    display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0;
+  }
+  .project-links { display: flex; gap: .5rem; }
+  .project-links a { color: var(--ink-3); font-size: 14px; transition: color .15s; }
+  .project-links a:hover { color: var(--accent); }
+  .project-name { font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: .25rem; }
+  .project-desc { font-size: 13.5px; color: var(--ink-2); line-height: 1.6; }
+  .project-stack { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .25rem; }
+  .project-tag { font-size: 11.5px; padding: 2px 8px; border-radius: 5px; background: var(--accent-light); color: var(--accent); font-weight: 500; }
+  .highlight-badge {
+    display: inline-flex; align-items: center; gap: .3rem;
+    font-size: 11px; font-weight: 600; padding: 3px 9px;
+    border-radius: 999px; background: #fff8e6; color: #a06000; border: 1px solid #f0d080;
+  }
+
+  .exp-list { display: flex; flex-direction: column; gap: 0; }
+  .exp-item {
+    display: grid; grid-template-columns: 160px 1fr;
+    gap: 0 2rem; padding: 1.5rem 0; border-bottom: 1px solid var(--border);
+  }
+  .exp-item:first-child { padding-top: 0; }
+  .exp-item:last-child { border-bottom: none; }
+  .exp-date { font-size: 12.5px; color: var(--ink-3); padding-top: 2px; line-height: 1.5; }
+  .exp-role { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: .2rem; }
+  .exp-company { font-size: 13.5px; color: var(--accent); margin-bottom: .6rem; font-weight: 500; }
+  .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: .35rem; }
+  .exp-bullets li { font-size: 13.5px; color: var(--ink-2); line-height: 1.6; padding-left: 1rem; position: relative; }
+  .exp-bullets li::before { content: '–'; position: absolute; left: 0; color: var(--ink-3); }
+
+  .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
+  .edu-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; }
+  .edu-school { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: .2rem; }
+  .edu-degree { font-size: 13.5px; color: var(--accent); font-weight: 500; margin-bottom: .4rem; }
+  .edu-meta { font-size: 12.5px; color: var(--ink-3); }
+
+  .pub-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-left: 3px solid var(--accent); border-radius: var(--radius); padding: 1.25rem 1.5rem;
+  }
+  .pub-title { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: .4rem; line-height: 1.5; }
+  .pub-venue { font-size: 13px; color: var(--ink-3); margin-bottom: .6rem; }
+
+  .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+  .contact-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem;
+    display: flex; align-items: center; gap: .75rem; text-decoration: none; transition: border-color .15s;
+  }
+  .contact-card:hover { border-color: var(--accent); }
+  .contact-icon { font-size: 18px; color: var(--accent); width: 24px; text-align: center; }
+  .contact-label { font-size: 11.5px; color: var(--ink-3); margin-bottom: 2px; }
+  .contact-val { font-size: 13.5px; font-weight: 500; color: var(--ink); }
+
+  footer { text-align: center; padding: 2.5rem 2rem; font-size: 12.5px; color: var(--ink-3); border-top: 1px solid var(--border); }
+
+  @media (max-width: 600px) {
+    .hero { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 1.25rem 2.5rem; }
+    .avatar-block { display: flex; flex-direction: column; align-items: flex-start; }
+    .avatar { width: 80px; height: 80px; font-size: 1.6rem; }
+    .social-row { justify-content: flex-start; }
+    .exp-item { grid-template-columns: 1fr; gap: .25rem; }
+    section { padding: 2.5rem 1.25rem; }
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+  }
+</style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Likhitha Sindhu Geddam</h1>
-            <div class="social-links">
-                <a href="https://www.github.com/likhitha281" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://in.linkedin.com/in/likhitha-sindhu-geddam-b92b8b226" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://www.instagram.com/likhithageddam" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="Google"><i class="fab fa-google"></i></a>
-                <a href="https://www.kaggle.com/likhithageddam" target="_blank" aria-label="Kaggle"><i class="fab fa-kaggle"></i></a>
-            </div>
-        </header>
 
-        <section id="about">
-            <div class="section-header">
-                <h2>About me</h2>
-            </div>
-            <div class="highlight-box">
-                <p>I am a technology consultant at PwC India, focused on building scalable cross-platform applications using FlutterFlow, Flutter and React Native. I am also a computer vision enthusiast hoping to build solutions that merge innovation with impact.</p>
-            </div>
-        </section>
+<nav>
+  <a class="nav-name" href="#">Likhitha Sindhu Geddam</a>
+  <div class="nav-links">
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
 
-        <section id="education">
-            <h2>Education</h2>
-            <p>B.Tech - Electronics and Communication Engineering,<br>
-            PES University, Bengaluru</p>
-        </section>
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">AI/ML Engineer &amp; Researcher</div>
+    <h1>Likhitha Sindhu Geddam</h1>
+    <p class="hero-sub">
+      Building production AI systems at the intersection of LLMs, multimodal reasoning, and real-world reliability. MS Data Science student at ASU &amp; Research Intern at IIIT Bangalore. 2 years at PricewaterhouseCoopers.
+    </p>
+    <div class="hero-badges">
+      <span class="badge accent">LLMs &amp; Generative AI</span>
+      <span class="badge accent">Multimodal AI / VLMs</span>
+      <span class="badge accent">NLP</span>
+      <span class="badge">Computer Vision</span>
+      <span class="badge">MLOps</span>
+      <span class="badge">AWS · GCP · Azure</span>
+    </div>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="mailto:lgeddam1@asu.edu"><i class="fas fa-envelope"></i> Get in touch</a>
+      <a class="btn btn-ghost" href="https://github.com/likhitha281" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      <a class="btn btn-ghost" href="https://in.linkedin.com/in/likhitha-sindhu-geddam-b92b8b226" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+    </div>
+  </div>
+  <div class="avatar-block">
+    <div class="avatar">LG</div>
+    <div class="social-row">
+      <a href="https://github.com/likhitha281" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://in.linkedin.com/in/likhitha-sindhu-geddam-b92b8b226" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://www.kaggle.com/likhithageddam" target="_blank" aria-label="Kaggle"><i class="fab fa-kaggle"></i></a>
+      <a href="mailto:lgeddam1@asu.edu" aria-label="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+  </div>
+</div>
 
-        <section id="experience">
-            <h2>Experience</h2>
-            <div class="experience-item">
-                <div class="year">2023 - PRESENT</div>
-                <div class="job-title">Associate Technology Consultant, PwC India</div>
-                <div class="text-widget"> </div>
-            </div>
-        </section>
+<section id="skills">
+  <div class="section-label">What I work with</div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-card-label">LLMs &amp; Generative AI</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Gemini ADK</span><span class="skill-tag">OpenAI API</span><span class="skill-tag">RAG Pipelines</span><span class="skill-tag">Agentic AI</span><span class="skill-tag">Hallucination Detection</span><span class="skill-tag">Prompt Engineering</span><span class="skill-tag">LLM Evaluation</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-label">ML &amp; Deep Learning</div>
+      <div class="skill-tags">
+        <span class="skill-tag">TensorFlow</span><span class="skill-tag">Scikit-learn</span><span class="skill-tag">PyTorch</span><span class="skill-tag">YOLOv5</span><span class="skill-tag">Computer Vision</span><span class="skill-tag">NLP</span><span class="skill-tag">LSTM</span><span class="skill-tag">ARIMA</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-label">MLOps &amp; Infrastructure</div>
+      <div class="skill-tags">
+        <span class="skill-tag">FastAPI</span><span class="skill-tag">Docker</span><span class="skill-tag">Kubernetes</span><span class="skill-tag">AWS EC2</span><span class="skill-tag">Google Cloud Run</span><span class="skill-tag">Nginx</span><span class="skill-tag">Arize Phoenix</span><span class="skill-tag">OpenTelemetry</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-label">Data &amp; Analytics</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Pandas</span><span class="skill-tag">NumPy</span><span class="skill-tag">Spark</span><span class="skill-tag">Hadoop</span><span class="skill-tag">Tableau</span><span class="skill-tag">ANOVA</span><span class="skill-tag">Chi-Square</span><span class="skill-tag">EDA</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-label">Programming</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Python</span><span class="skill-tag">SQL</span><span class="skill-tag">JavaScript</span><span class="skill-tag">TypeScript</span><span class="skill-tag">C/C++</span><span class="skill-tag">React</span><span class="skill-tag">Node.js</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-label">Mobile &amp; Cross-platform</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Flutter</span><span class="skill-tag">React Native</span><span class="skill-tag">Flutterflow</span><span class="skill-tag">REST APIs</span><span class="skill-tag">OAuth 2.0</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <section id="projects">
-            <h2>Projects</h2>
-            <div class="project-item">
-                <p>Detection of white stem borer using YoloV5</p>
-                <a href="https://github.com/likhitha281/Detection-of-white-stem-borer-using-YOLOv5" target="_blank" class="external-link"><i class="fas fa-external-link-alt"></i></a>
-            </div>
-            <div class="project-item">
-                <p>Detection of white stem borer using YoloV8</p>
-                <a href="https://github.com/likhitha281/Detection-of-white-stem-borer-using-YoloV8" target="_blank" class="external-link"><i class="fas fa-external-link-alt"></i></a>
-            </div>
-        </section>
+<section id="projects">
+  <div class="section-label">Selected projects</div>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-top">
+        <div class="project-icon"><i class="fas fa-eye"></i></div>
+        <div class="project-links">
+          <a href="https://github.com/likhitha281/HallucinationWatchdog" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+      <div>
+        <div class="project-name">Hallucination Watchdog</div>
+        <div class="project-desc">Real-time LLM hallucination detection agent built with Google ADK + Gemini 2.5 Flash and Arize Phoenix. Scores faithfulness, tracks drift, and self-improves by reading its own history. Deployed on Google Cloud Run.</div>
+      </div>
+      <div class="project-stack">
+        <span class="project-tag">Gemini ADK</span><span class="project-tag">Arize Phoenix</span><span class="project-tag">FastAPI</span><span class="project-tag">OpenTelemetry</span><span class="project-tag">Cloud Run</span>
+      </div>
+      <div><span class="highlight-badge"><i class="fas fa-trophy"></i> Google Cloud Rapid Agent Hackathon</span></div>
     </div>
 
-    <script src="script.js"></script>
+    <div class="project-card">
+      <div class="project-top">
+        <div class="project-icon"><i class="fas fa-code-branch"></i></div>
+        <div class="project-links">
+          <a href="https://github.com/likhitha281/RepoLens" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+      <div>
+        <div class="project-name">RepoLens</div>
+        <div class="project-desc">AI-powered codebase visualization tool. Drop in a GitHub URL and get an interactive architecture map with plain-English node explanations, powered by Gemini 2.0 Flash and rendered as a custom SVG graph.</div>
+      </div>
+      <div class="project-stack">
+        <span class="project-tag">Gemini 2.0</span><span class="project-tag">React 18</span><span class="project-tag">Node.js</span><span class="project-tag">SVG Graph</span>
+      </div>
+      <div><span class="highlight-badge"><i class="fas fa-trophy"></i> IBM Bob Hackathon 2026</span></div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-top">
+        <div class="project-icon"><i class="fas fa-rss"></i></div>
+        <div class="project-links">
+          <a href="https://github.com/likhitha281/QueryFeed" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+      <div>
+        <div class="project-name">QueryFeed</div>
+        <div class="project-desc">Real-time BigQuery release-notes feed parser with instant keyword search, category filtering, and one-click tweet composer. Built with Python/Flask and vanilla JS — no page reloads.</div>
+      </div>
+      <div class="project-stack">
+        <span class="project-tag">Python</span><span class="project-tag">Flask</span><span class="project-tag">Atom XML</span><span class="project-tag">Twitter API</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-top">
+        <div class="project-icon"><i class="fas fa-hospital"></i></div>
+        <div class="project-links"></div>
+      </div>
+      <div>
+        <div class="project-name">Hospital Readmission Prediction</div>
+        <div class="project-desc">End-to-end ML system on 101,766 diabetes records. Identified 4 risk clusters (82% silhouette score); high-risk cluster at 14.1% vs 9.8% baseline. FastAPI on AWS EC2 with 85%+ accuracy and &lt;100ms latency.</div>
+      </div>
+      <div class="project-stack">
+        <span class="project-tag">FastAPI</span><span class="project-tag">AWS EC2</span><span class="project-tag">K-Means</span><span class="project-tag">UMAP</span><span class="project-tag">Streamlit</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-top">
+        <div class="project-icon"><i class="fas fa-robot"></i></div>
+        <div class="project-links">
+          <a href="https://ieeexplore.ieee.org/document/10087558" target="_blank" title="IEEE Paper"><i class="fas fa-file-alt"></i></a>
+        </div>
+      </div>
+      <div>
+        <div class="project-name">Multi-Terrain Coffee Disease Robot</div>
+        <div class="project-desc">Autonomous robot using Neural Bilinear Koopman Algorithm + YOLOv5 to detect White Stem Borer disease in Arabica coffee plantations. Published at IEEE CSPA 2023.</div>
+      </div>
+      <div class="project-stack">
+        <span class="project-tag">YOLOv5</span><span class="project-tag">Computer Vision</span><span class="project-tag">MATLAB</span><span class="project-tag">Robotics</span>
+      </div>
+      <div><span class="highlight-badge"><i class="fas fa-trophy"></i> Best Paper Award — IEEE CSPA 2023</span></div>
+    </div>
+
+  </div>
+</section>
+
+<section id="experience">
+  <div class="section-label">Experience</div>
+  <div class="exp-list">
+
+    <div class="exp-item">
+      <div class="exp-date">May 2026 — Present</div>
+      <div>
+        <div class="exp-role">Research Intern</div>
+        <div class="exp-company">IIIT Bangalore · Bengaluru, India</div>
+        <ul class="exp-bullets">
+          <li>Researching deepfake and synthetic video detection using Vision-Language Models (VLMs), under Prof. V. N. Muralidhara.</li>
+          <li>Exploring cross-modal alignment between visual frames and language to build detection pipelines robust across generative architectures.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">Aug 2025 — Present</div>
+      <div>
+        <div class="exp-role">MS Data Science Student</div>
+        <div class="exp-company">Arizona State University · Tempe, AZ</div>
+        <ul class="exp-bullets">
+          <li>Computing and Decision Analytics track. Coursework: AI, Data Processing at Scale, Data Mining, Probability &amp; Statistics.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">Jul 2023 — Jul 2025</div>
+      <div>
+        <div class="exp-role">Associate Technology Consultant</div>
+        <div class="exp-company">PricewaterhouseCoopers India · Mumbai</div>
+        <ul class="exp-bullets">
+          <li>Built production banking apps integrating Face Detection + OCR for E-KYC in Flutter using Google ML Kit.</li>
+          <li>Developed PwC's Centre of Delivery Excellence portal in Flutter with OAuth 2.0, REST APIs, and Nginx deployment.</li>
+          <li>Created 100+ custom Flutterflow components at org level; mentored 50+ associates.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">Jan 2023 — Jul 2023</div>
+      <div>
+        <div class="exp-role">Technology Intern</div>
+        <div class="exp-company">PricewaterhouseCoopers India · Mumbai</div>
+        <ul class="exp-bullets">
+          <li>Architected org-wide design libraries in Flutter and Flutterflow; built PoCs covering UPI payments, automated KYC, and budget planning tools for banking clients.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">Jun 2022 — Aug 2022</div>
+      <div>
+        <div class="exp-role">Summer Intern</div>
+        <div class="exp-company">LRDE, DRDO · Bengaluru</div>
+        <ul class="exp-bullets">
+          <li>Designed an FIR filter using convex optimization and the window method in MATLAB/CVX for radar signal processing.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="education">
+  <div class="section-label">Education</div>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div class="edu-school">Arizona State University</div>
+      <div class="edu-degree">MS Data Science — Computing &amp; Decision Analytics</div>
+      <div class="edu-meta">Tempe, Arizona · Aug 2025 – May 2027</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-school">PES University</div>
+      <div class="edu-degree">B.Tech — Electronics &amp; Communication Engineering</div>
+      <div class="edu-meta">Bengaluru, India · Aug 2019 – May 2023</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 2rem;">
+    <div class="section-label" style="margin-bottom: 1rem;">Publication</div>
+    <div class="pub-card">
+      <div class="pub-title">Detection of White Stem Borer Disease in Coffee Plantation using Autonomous Multi Terrain Robot</div>
+      <div class="pub-venue">IEEE CSPA 2023 · Kedah, Malaysia · doi: 10.1109/CSPA57446.2023.10087558</div>
+      <span class="highlight-badge"><i class="fas fa-trophy"></i> Best Paper Award</span>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-label">Get in touch</div>
+  <div class="contact-grid">
+    <a class="contact-card" href="mailto:lgeddam1@asu.edu">
+      <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+      <div><div class="contact-label">Email</div><div class="contact-val">lgeddam1@asu.edu</div></div>
+    </a>
+    <a class="contact-card" href="https://github.com/likhitha281" target="_blank">
+      <div class="contact-icon"><i class="fab fa-github"></i></div>
+      <div><div class="contact-label">GitHub</div><div class="contact-val">likhitha281</div></div>
+    </a>
+    <a class="contact-card" href="https://in.linkedin.com/in/likhitha-sindhu-geddam-b92b8b226" target="_blank">
+      <div class="contact-icon"><i class="fab fa-linkedin-in"></i></div>
+      <div><div class="contact-label">LinkedIn</div><div class="contact-val">likhitha-sindhu-geddam</div></div>
+    </a>
+    <a class="contact-card" href="https://www.kaggle.com/likhithageddam" target="_blank">
+      <div class="contact-icon"><i class="fab fa-kaggle"></i></div>
+      <div><div class="contact-label">Kaggle</div><div class="contact-val">likhithageddam</div></div>
+    </a>
+  </div>
+</section>
+
+<footer>Built with care · Likhitha Sindhu Geddam · 2026</footer>
+
 </body>
 </html>
